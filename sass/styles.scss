@@ -1,0 +1,293 @@
+@use "flex" as *;
+@use "reset";
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap');
+$White: hsl(0, 0%, 100%);
+$Light-grayish-violet: #cac9cc;
+$Dark-grayish-violet: hsl(279, 6%, 55%);
+$Very-dark-violet: hsl(278, 68%, 11%);
+$Radius: .5rem;
+$Linear-gradient: hsl(249, 99%, 64%), hsl(278, 94%, 30%);
+$Red: hsl(0, 100%, 66%);
+
+body,
+html {
+    min-height: 100vh;
+}
+
+body {
+    color: $Very-dark-violet;
+    font-size: 18px;
+    font-family: 'Space Grotesk', sans-serif;
+    @include flex(center, center);
+    background-image: url("../images/bg-main-desktop.png");
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: contain;
+}
+
+input {
+    margin-top: .3rem;
+    width: 100%;
+    border: 1px solid $Light-grayish-violet;
+    padding: .8rem;
+    border-radius: $Radius;
+
+    &::placeholder {
+        font-size: 1rem;
+        color: $Light-grayish-violet;
+    }
+
+    font-size: 1rem;
+}
+
+.card {
+    padding: 0 1rem;
+    @include flex(center, center);
+    gap: clamp(10px, 15vw, 15rem);
+
+    & > * {
+        flex-basis: 100%;
+    }
+
+    &__main {
+        overflow: hidden;
+        position: relative;
+
+        &-data {
+            background-color: white;
+            border-radius: $Radius;
+            transition: .3s;
+            @include flex(center, center);
+            flex-direction: column;
+            padding: 5rem 1rem;
+            gap: 2rem;
+        }
+    }
+
+    &-number {
+        font-size: clamp(1rem, 4.5vw, 2rem);
+        width: 100%;
+        text-align: center;
+        margin-top: 3rem;
+    }
+
+    &-name {
+        text-transform: uppercase;
+        font-size: clamp(.6rem, 2vw, .8rem);
+    }
+
+    &-cvc {
+        font-size: clamp(.7rem, 3vw, 1rem);
+        position: absolute;
+        color: $White;
+        top: 43%;
+        right: -8%;
+        transform: translate(-43%, 8%);
+        z-index: 2;
+    }
+
+    &-dateMM {
+        margin-left: auto;
+    }
+
+    &__sidebar {
+        @include flex(center, center);
+        flex-direction: column;
+        gap: 2rem;
+        position: relative;
+
+        &-img-back {
+            transform: translateX(20%)
+        }
+
+        &-img-container-front {
+            position: relative;
+            letter-spacing: 3px;
+            color: $White;
+            @include flex(space-between, start);
+            flex-direction: column;
+            border-radius: $Radius;
+
+            & > div {
+                width: 100%;
+                @include flex(unset, center);
+            }
+
+            & > * {
+                pointer-events: none;
+            }
+
+            & .card-logo {
+                position: absolute;
+                top: 10%;
+                left: 5%;
+                width: 20%;
+            }
+
+            & .front-name-date {
+                position: absolute;
+                bottom: 0;
+                padding: 3% 5%;
+            }
+
+            & .card-number {
+                position: absolute;
+                bottom: 30%;
+            }
+
+            & .date {
+                font-size: clamp(.6rem, 2vw, .8rem);
+            }
+        }
+
+        &-img-container-back {
+            position: relative;
+
+            & > * {
+                pointer-events: none;
+            }
+        }
+    }
+}
+
+.thanks-screen {
+    transition: .3s;
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+    @include flex(center, center);
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+    position: absolute;
+    inset: 0;
+
+    & p {
+        color: $Dark-grayish-violet;
+    }
+
+    & h1 {
+        font-size: 2rem;
+        letter-spacing: 3px;
+        font-weight: normal;
+    }
+
+    & button {
+        border-radius: $Radius;
+        width: 100%;
+        padding: 1rem 2rem;
+        cursor: pointer;
+        transition: .3s;
+        background-color: $Very-dark-violet;
+        color: $White;
+        font-size: 1rem;
+
+        &:hover {
+            transform: scale(1.05);
+            background-color: hsl(278, 94%, 30%);
+        }
+    }
+}
+
+.warning {
+    position: absolute;
+    bottom: -20px;
+    text-transform: capitalize;
+    color: $Red;
+    transition: .3s;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0%);
+}
+
+.none {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(40%);
+}
+
+.date-cvc {
+    @include flex(center, start);
+    gap: 2rem;
+}
+
+.btn {
+    cursor: pointer;
+    transition: .3s;
+    background-color: $Very-dark-violet;
+    color: $White;
+    font-size: 1rem;
+
+    &:hover {
+        transform: scale(1.05);
+        background-color: hsl(278, 94%, 30%);
+    }
+}
+
+.date {
+    display: flex;
+    gap: 1rem;
+}
+
+.data__labels {
+    width: 100%;
+    position: relative;
+    text-transform: uppercase;
+    font-size: clamp(.7rem, 3vw, .8rem);
+    letter-spacing: 2px;
+}
+
+@media (max-width: 1000px) {
+    body {
+        background-image: url("../images/bg-main-mobile.png");
+        background-position: top;
+    }
+
+    .card {
+        margin: 6rem 0;
+        display: grid;
+        gap: 1rem;
+
+        &__sidebar {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+
+            &-img-container-back {
+                width: 100%;
+                align-self: center;
+                z-index: -1;
+                grid-column: 2/6;
+                grid-row: 1/4;
+
+                & img {
+                    width: 100%;
+                }
+
+                & .card-cvc {
+                    top: 45.5%;
+                    right: 10%;
+                    transform: translate(-45.5%, -10%);
+                }
+            }
+
+            &-img-container-front {
+                grid-column: 1/5;
+                grid-row: 3/5;
+
+                & .front {
+                    width: 100%;
+                }
+            }
+
+            &-img-back {
+                transform: translateX(0)
+            }
+        }
+
+        &__main {
+            &-data {
+                padding: 0 1rem;
+            }
+        }
+    }
+}
