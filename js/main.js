@@ -125,7 +125,7 @@ btn.addEventListener('click', function () {
 
     } else {
         warningNumber.classList.add("none")
-        numberInput.style.outline = "3px solid hsl(130, 74%, 56%)"
+        numberInput.style.outline = "unset"
 
     }
 
@@ -146,7 +146,7 @@ btn.addEventListener('click', function () {
 
     } else {
         warningName.classList.add("none")
-        nameInput.style.outline = "3px solid hsl(130, 74%, 56%)"
+        nameInput.style.outline = "unset"
 
     }
 
@@ -168,7 +168,7 @@ btn.addEventListener('click', function () {
 
     } else {
         warningDate.classList.add("none")
-        dateMMInput.style.outline = "3px solid hsl(130, 74%, 56%)"
+        dateMMInput.style.outline = "unset"
 
     }
 
@@ -190,7 +190,7 @@ btn.addEventListener('click', function () {
 
     } else {
         warningDate.classList.add("none")
-        dateYYInput.style.outline = "3px solid hsl(130, 74%, 56%)"
+        dateYYInput.style.outline = "unset"
 
     }
 
@@ -214,7 +214,7 @@ btn.addEventListener('click', function () {
 
     } else {
         warningCVC.classList.add("none")
-        cvcInput.style.outline = "3px solid hsl(130, 74%, 56%)"
+        cvcInput.style.outline = "unset"
 
 
     }

@@ -19,10 +19,6 @@ body {
     font-size: 18px;
     font-family: 'Space Grotesk', sans-serif;
     @include flex(center, center);
-    background-image: url("../images/bg-main-desktop.png");
-    background-repeat: no-repeat;
-    background-position: left;
-    background-size: contain;
 }
 
 input {
@@ -41,9 +37,10 @@ input {
 }
 
 .card {
-    padding: 0 1rem;
-    @include flex(center, center);
-    gap: clamp(10px, 15vw, 15rem);
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    gap: clamp(10px, 5vw, 15rem);
 
     & > * {
         flex-basis: 100%;
@@ -52,6 +49,8 @@ input {
     &__main {
         overflow: hidden;
         position: relative;
+        @include flex(center, center);
+        padding: 1rem;
 
         &-data {
             background-color: white;
@@ -81,8 +80,9 @@ input {
         position: absolute;
         color: $White;
         top: 43%;
-        right: -8%;
-        transform: translate(-43%, 8%);
+        right: 2.5rem;
+        
+        transform: translate(-43%);
         z-index: 2;
     }
 
@@ -91,14 +91,17 @@ input {
     }
 
     &__sidebar {
+        padding: 1rem;
+        background-image: url("../images/bg-main-desktop.png");
+        background-repeat: no-repeat;
+        background-position: left;
+        background-size: 70% 100%;
         @include flex(center, center);
         flex-direction: column;
         gap: 2rem;
         position: relative;
 
-        &-img-back {
-            transform: translateX(20%)
-        }
+        
 
         &-img-container-front {
             position: relative;
@@ -142,7 +145,7 @@ input {
 
         &-img-container-back {
             position: relative;
-
+            transform: translateX(clamp(0%, 5vw, 20%));
             & > * {
                 pointer-events: none;
             }
@@ -174,7 +177,7 @@ input {
 
     & button {
         border-radius: $Radius;
-        width: 100%;
+        width: 80%;
         padding: 1rem 2rem;
         cursor: pointer;
         transition: .3s;
@@ -237,27 +240,33 @@ input {
     letter-spacing: 2px;
 }
 
-@media (max-width: 1000px) {
-    body {
-        background-image: url("../images/bg-main-mobile.png");
-        background-position: top;
-    }
+@media (max-width: 880px) {
+    
 
     .card {
-        margin: 6rem 0;
+        
         display: grid;
         gap: 1rem;
 
         &__sidebar {
+            background-image: url("../images/bg-main-mobile.png");
+            background-repeat: no-repeat;
+            background-position: top;
+            background-size: 100% 70%;
             display: grid;
             grid-template-columns: repeat(5, 1fr);
+            width: 100%;
+            height: 100%;
+            z-index: -1;
 
             &-img-container-back {
                 width: 100%;
                 align-self: center;
                 z-index: -1;
                 grid-column: 2/6;
-                grid-row: 1/4;
+                grid-row: 2/4;
+                
+                
 
                 & img {
                     width: 100%;
@@ -273,15 +282,16 @@ input {
             &-img-container-front {
                 grid-column: 1/5;
                 grid-row: 3/5;
+                
 
                 & .front {
                     width: 100%;
                 }
             }
-
-            &-img-back {
-                transform: translateX(0)
+            &-img-container-back {
+                transform: translate(0);
             }
+            
         }
 
         &__main {
