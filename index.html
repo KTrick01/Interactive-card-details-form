@@ -12,6 +12,16 @@
   <title>Frontend Mentor | Interactive card details form</title>
   <script src="https://kit.fontawesome.com/c27c855421.js" crossorigin="anonymous"></script>
   <style>
+    @keyframes border {
+      0% {
+        outline-color: rgb(255, 255, 255);
+      }
+
+      100% {
+        outline-color: rgba(255, 255, 255, 0);
+      }
+    }
+
     .attrbtn {
       font-size: 1.5rem;
       transition: .3s;
@@ -45,6 +55,9 @@
     }
 
     .attribution {
+      animation: border 4s infinite alternate;
+      outline: 2px solid rgb(255, 255, 255);
+      overflow: hidden;
       display: flex;
       align-items: center;
       transition: .3s;
@@ -61,7 +74,6 @@
       text-align: center;
       letter-spacing: 2px;
       color: #599fda;
-      ;
     }
 
     .attribution a {
